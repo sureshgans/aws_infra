@@ -7,7 +7,9 @@ terraform {
   }
 }
 
-# Configure the AWS Provider
-provider "aws" {
-  region = "us-east-1"
-}
+backend "s3" {
+    bucket         = "aws-infra-tfstate"
+    key            = "aws-infra-tfstate.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+  }
