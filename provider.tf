@@ -7,9 +7,6 @@ terraform {
   }
 }
 
-backend "s3" {
-    bucket         = "aws-infra-tfstate"
-    key            = "aws-infra-tfstate.tfstate"
-    region         = "us-east-1"
-    encrypt        = true
-  }
+provider "aws" {
+  region = "us-east-1"
+}
