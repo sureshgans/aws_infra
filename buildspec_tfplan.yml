@@ -1,0 +1,27 @@
+version: 0.2
+
+env:
+  variables:
+    TF_VERSION: "1.1.0"
+
+phases:
+
+  install:
+    commands:
+      - "curl -o terraform.zip https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip"
+      - unzip -o terraform.zip
+
+  build:
+    commands:
+      - echo `ls -ltr`
+      - terraform --version
+      - terraform init
+      - terraform plan -out tf_codepipeline_plan
+
+  post_build:
+    commands:
+      - echo "terraform plan saved successfully"
+
+artifacts:
+  files:
+    - tf_codepipeline_plan
