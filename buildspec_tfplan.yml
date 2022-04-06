@@ -14,9 +14,9 @@ phases:
   build:
     commands:
       - echo `ls -ltr`
-      - terraform --version
-      - terraform init
-      - terraform plan -out tf_codepipeline_plan
+      - ./terraform --version
+      - ./terraform init
+      - ./terraform plan -out tf_codepipeline_plan
 
   post_build:
     commands:
